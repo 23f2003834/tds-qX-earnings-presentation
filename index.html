@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Q4 2025 Earnings Report | Acme Financial Corp</title>
+  <meta name="description" content="Quarterly Earnings Presentation">
+  <meta name="author" content="Technical Consultant">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/theme/moon.min.css" id="theme">
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/plugin/highlight/monokai.min.css">
+  
+  <style>
+    .reveal section img { border:none; box-shadow:none; }
+    .contact { position: absolute; bottom: 20px; right: 30px; font-size: 0.5em; color: #aaa; }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1: Title -->
+      <section data-background="#003087">
+        <h1 style="color:#fff;">Q4 2025 Earnings Report</h1>
+        <h3 style="color:#fff;">Acme Financial Corporation</h3>
+        <p style="color:#fff;">Presented by Technical Consulting Team</p>
+        <div class="contact">23f2003834@ds.study.iitm.ac.in</div>
+      </section>
+
+      <!-- Slide 2: Agenda (Markdown slide) -->
+      <section>
+        <h2>Agenda</h2>
+        <div class="fragment fade-up">1. Financial Highlights</div>
+        <div class="fragment fade-up">2. Revenue Breakdown</div>
+        <div class="fragment fade-up">3. Risk & Compliance Metrics</div>
+        <div class="fragment fade-up">4. Technology Investments</div>
+        <div class="fragment fade-up">5. Q&A</div>
+        <aside class="notes">
+          This slide uses Reveal.js fragments for animated bullet appearance.
+        </aside>
+      </section>
+
+      <!-- Slide 3: Key Financials with Fragments -->
+      <section>
+        <h2>Q4 2025 Key Highlights</h2>
+        <ul>
+          <li class="fragment">Revenue: <strong>$2.84B</strong> ↑ 18% YoY</li>
+          <li class="fragment">Net Income: <strong>$684M</strong> ↑ 24%</li>
+          <li class="fragment">EPS: <strong>$3.92</strong> (beat estimates by $0.27)</li>
+          <li class="fragment">ROE: <strong>19.8%</strong></li>
+        </ul>
+        <aside class="notes">Each bullet appears on click — great for pacing.</aside>
+      </section>
+
+      <!-- Slide 4: Mathematical Formula (Black-Scholes example) -->
+      <section data-background="#111">
+        <h2 style="color:#fff;">Risk Modeling – Black-Scholes</h2>
+        <div style="font-size: 0.7em; color:#fff;">
+          <p>Call option price:</p>
+          $$C = S_0 N(d_1) - K e^{-rT} N(d_2)$$
+          <div class="fragment">
+            $$d_1 = \frac{\ln(S_0/K) + (r + \sigma^2/2)T}{\sigma\sqrt{T}}$$
+          </div>
+          <div class="fragment">
+            $$d_2 = d_1 - \sigma\sqrt{T}$$
+          </div>
+        </div>
+        <aside class="notes">Used daily by our derivatives desk. Reveal.js renders LaTeX beautifully with MathJax.</aside>
+      </section>
+
+      <!-- Slide 5: Code Sample with Syntax Highlighting -->
+      <section>
+        <h2>Real-Time Risk Dashboard (Python)</h2>
+        <pre><code data-trim data-noescape class="python">
+import pandas as pd
+import numpy as np
+from scipy.stats import norm
+
+def black_scholes(S, K, T, r, sigma, type="call"):
+    d1 = (np.log(S/K) + (r + sigma**2/2)*T) / (sigma*np.sqrt(T))
+    d2 = d1 - sigma*np.sqrt(T)
+    
+    if type == "call":
+        price = S*norm.cdf(d1) - K*np.exp(-r*T)*norm.cdf(d2)
+    elif type == "put":
+        price = K*np.exp(-r*T)*norm.cdf(-d2) - S*norm.cdf(-d1)
+    
+    return price
+
+# Live pricing example
+option_price = black_scholes(S=4320, K=4300, T=0.25, r=0.0525, sigma=0.18)
+print(f"Call option fair value: ${option_price:.2f}")
+        </code></pre>
+        <aside class="notes">This exact code runs in our internal pricing engine.</aside>
+      </section>
+
+      <!-- Final Slide -->
+      <section data-background="#003087">
+        <h1 style="color:#fff;">Thank You</h1>
+        <p style="color:#fff; font-size:0.8em;">
+          Questions?<br>
+          <strong>23f2003834@ds.study.iitm.ac.in</strong>
+        </p>
+        <div class="contact">23f2003834@ds.study.iitm.ac.in</div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js Plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/plugin/math/math.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/plugin/highlight/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/plugin/notes/notes.min.js"></script>
+
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: true,
+      progress: true,
+      center: true,
+      transition: 'slide',
+      backgroundTransition: 'fade',
+      
+      // Enable plugins
+      plugins: [ RevealMath.KaTeX, RevealHighlight, RevealNotes ]
+    });
+  </script>
+</body>
+</html>
